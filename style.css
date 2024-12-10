@@ -1,0 +1,416 @@
+/* Root Variables */
+:root {
+    --primary-color: rgba(219, 231, 255, 1);
+    --secondary-color: rgba(0, 0, 0, 0.8);
+    --background-color: #f9fafb;
+    --font-family: 'Inter', sans-serif;
+    --notification-color: red;
+    --button-color: #007bff;
+    --button-text-color: white;
+    --sidebar-width: 80px;
+    --sidebar-expanded-width: 200px;
+    --sidebar-hover-bg: #f3f4f6;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+/* Body */
+body {
+    font-family: var(--font-family);
+    background-color: rgba(255, 255, 255, 1); /* تغيير خلفية الجسم للون الأبيض */
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Navigation */
+/* Top Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 1); /* تغيير خلفية النيف بار للون الأبيض */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.top-nav .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+.top-nav .nav-left .logo {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.top-nav .nav-left ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.top-nav .nav-left ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.top-nav .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.top-nav .nav-right .icon {
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.top-nav .nav-right .notification {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--notification-color);
+    color: white;
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+.top-nav .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-nav .profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.top-nav .profile i {
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px);
+    margin-top: 0;
+}
+
+/* Sidebar */
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: rgba(255, 255, 255, 1); /* تغيير خلفية الـ Sidebar للون الأبيض */
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    transition: all 0.3s ease;
+    height: 100%;
+    overflow-y: auto;
+}
+
+
+.sidebar:hover {
+    width: 250px; /* زيادة عرض الشريط الجانبي عند التمرير */
+}
+
+.sidebar .sections {
+    width: 100%;
+}
+
+.sidebar .section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .section ul li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.sidebar .section ul li i {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.sidebar .section ul li span {
+    display: none;
+    color: black;
+}
+
+.sidebar:hover .section ul li span {
+    display: inline;
+}
+
+.sidebar .section ul li:hover,
+.sidebar .section ul li.active {
+    background-color: var(--sidebar-hover-bg);
+}
+
+/* توسيط الأرقام داخل الدائرة */
+.sidebar .section ul li .number {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: black;
+    font-size: 10px;  /* حجم الخط الأصغر */
+    padding: 4px 8px;  /* تقليص حجم الحواف */
+    border-radius: 50%;
+    margin-left: auto;
+    position: absolute;
+    top: 50%;
+    right: 30px;  /* زيادة المسافة بين الأيقونة والرقم */
+    transform: translateY(-50%);
+    width: 15px; /* عرض الدائرة */
+    height: 15px; /* ارتفاع الدائرة */
+    text-align: center;  /* محاذاة النص في المنتصف أفقياً */
+    line-height: 15px; /* محاذاة النص في المنتصف رأسياً */
+}
+
+/* توسيط الأيقونة + داخل الدائرة */
+.sidebar .section ul li .plus-icon {
+    background-color: #007bff;
+    color: white;
+    font-size: 12px; /* تصغير حجم الأيقونة */
+    border-radius: 50%;
+    padding: 6px;
+    margin-left: 10px;
+    position: absolute;
+    top: 50%;
+    right: 5px;  /* زيادة المسافة بين الأيقونة والرقم */
+    transform: translateY(-50%);
+    width: 15px; /* عرض الأيقونة */
+    height: 15px; /* ارتفاع الأيقونة */
+    text-align: center;  /* محاذاة الأيقونة في المنتصف أفقياً */
+    line-height: 15px; /* محاذاة الأيقونة في المنتصف رأسياً */
+}
+
+
+.sidebar hr {
+    width: 80%;
+    border: 0.5px solid #e5e7eb;
+    margin: 20px 0;
+}
+
+.sidebar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Home Icon with Circle */
+.sidebar .home-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(219, 231, 255, 1);
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.sidebar .home-icon i {
+    color: rgba(21, 59, 252, 1);
+    font-size: 20px;
+}
+
+/* Search Icon */
+.sidebar .search-icon {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .search-icon:hover {
+    background-color: rgba(219, 231, 255, 0.6);
+    border-radius: 5px;
+}
+
+.sidebar .search-icon span {
+    display: none;
+    margin-left: 10px;
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+.sidebar:hover .search-icon span {
+    display: inline;
+}
+
+.sidebar .search-icon.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Section Text */
+.section p {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    opacity: 50;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Stats Section */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.stat {
+    background-color: rgba(219, 231, 255, 1);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: black;
+    overflow-y: auto;
+}
+
+.stat h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+.stat p {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Content sections (New Pay Cycle and Applicants) */
+.content-sections {
+    display: flex;
+    gap: 20px;
+}
+
+.form-section, .table-section {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2, .table-section h2 {
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.form-section form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.form-section input,
+.form-section select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+}
+
+.form-section .save-btn {
+    padding: 8px 15px;
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    margin-left: auto;
+}
+
+.table-section table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.table-section th,
+.table-section td {
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.table-section th {
+    background-color: rgba(250, 250, 250, 1);
+    color: var(--secondary-color);
+}
+
+.table-section tr:nth-child(even) {
+    background-color: #f3f4f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .content-sections {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar:hover {
+        width: 60px;
+    }
+
+    .top-nav .nav-left ul {
+        display: none;
+    }
+
+    .top-nav .nav-left .logo {
+        width: 30px;
+        height: 30px;
+    }
+}
